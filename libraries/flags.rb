@@ -14,20 +14,22 @@ module NumbersD
       :broadcasts
     ]
 
-    FLAGS.each { |f| attr_accessor f }
+    FLAGS.each { |name| attr_accessor name }
 
     def initialize(settings)
       @settings = settings
     end
 
     def command_line
-      flags = FLAGS.map(&:flag)
-      "#{settings.path} #{flags.compact.join(' ')}"
+      flags = FLAGS.map { |name| flag(name) }
+      "#{@settings.path} #{flags.compact.join(' ')}"
     end
 
     def flag(name)
       val = send(name)
-      unless val.nil? "--#{name}=#{value(val)}"
+      unless val.nil?
+        "--#{name}=#{value(val)}"
+      end
     end
 
     def value(val)

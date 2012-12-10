@@ -1,5 +1,5 @@
 module NumbersD
-  module Settings
+  class Settings
 
     attr_reader :version, :checksum, :source, :user
 
