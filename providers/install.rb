@@ -6,7 +6,7 @@ action :install do
     mode 0755
   end
 
-  remote_file settings.tar do
+  remote_file settings.tar_dir do
     checksum settings.checksum
     source settings.source
     mode 0644
@@ -16,7 +16,7 @@ action :install do
   bash "extract numbersd" do
     cwd settings.home
     code <<-CODE
-      tar -xzf #{settings.tar}
+      tar -xzf #{settings.tar_dir}
       chown -R #{settings.user} #{settings.home}
     CODE
     not_if { settings.installed? }

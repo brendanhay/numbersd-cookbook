@@ -4,23 +4,28 @@ module NumbersD
     attr_reader :version, :checksum, :source, :user
 
     def initialize(version, checksum, source, user)
-      @version, @checksum, @source, @user = version, checksum, source, user
-    end
-
-    def home
-      "/opt/numbersd-#{version}"
+      @version, @checksum, @user = version, checksum, user
+      @source = "#{source}/#{tar}"
     end
 
     def bin
       "numbersd"
     end
 
-    def path
-      "#{home}/#{bin}"
+    def tar
+      "#{bin}-#{version}.tar.gz"
     end
 
-    def tar
-      "/var/tmp/#{bin}-#{version}.tar.gz"
+    def tar_dir
+      "/var/tmp/#{tar}"
+    end
+
+    def home
+      "/opt/#{bin}-#{version}"
+    end
+
+    def path
+      "#{home}/#{bin}"
     end
 
     def installed?
