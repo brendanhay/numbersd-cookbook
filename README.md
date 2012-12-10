@@ -10,9 +10,14 @@ Table of Contents
 
 ## Usage
 
-> TODO
+This cookbook provides two LWRPs currently, `install` and `runit`.
 
-If you're using `runit`:
+`runit` calls `install` implicitly, and is what I currently use to manage services.
+
+All flags can be overriden from their defaults by using the attr_writers
+specified in `./libraries/flags.rb`, see: [numbersd available flags](https://github.com/brendanhay/numbersd#available-flags) for a full list.
+
+**With runit:**
 
 ```ruby
 depends "numbersd"
@@ -29,8 +34,15 @@ numbersd_runit settings do
 end
 ```
 
-Flags can be overriden from their defaults by using the attr_writers
-specified in `./libraries/flags.rb`, see: [numbersd available flags](https://github.com/brendanhay/numbersd#available-flags) for a full list.
+**Without runit:**
+
+The same as above, but you will need to call `#command_line` on a `Flags`
+instance to retrieve the full list of flags to pass to a service manager template.
+
+```ruby
+flags = NumbersD::Flags.new(settings)
+flags.command_line
+```
 
 
 ## Contribute
