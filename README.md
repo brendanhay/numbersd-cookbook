@@ -10,9 +10,8 @@ Table of Contents
 
 ## Usage
 
-This cookbook provides two LWRPs currently, `install` and `runit`.
-
-`runit` calls `install` implicitly, and is what I currently use to manage services.
+This cookbook provides two LWRPs, `install` and `runit`. Internally `runit`
+calls `install` implicitly, and is what I currently use to manage numbersd.
 
 All flags can be overriden from their defaults by using the attr_writers
 specified in `./libraries/flags.rb`, see: [numbersd available flags](https://github.com/brendanhay/numbersd#available-flags) for a full list.
