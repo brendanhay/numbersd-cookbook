@@ -29,7 +29,7 @@ user     = .. # The user to chown/run numbersd as
 settings = NumbersD::Settings.new(version, checksum, source, user)
 
 numbersd_runit settings do
-  NumbersD::Flags.new(settings)
+  flags NumbersD::Flags.new(settings)
 end
 ```
 
