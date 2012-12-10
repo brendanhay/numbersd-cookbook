@@ -1,10 +1,10 @@
 module NumbersD
   module Settings
 
-    attr_reader :version, :checksum, :user, :uri
+    attr_reader :version, :checksum, :source, :user
 
-    def initialize(version, checksum, user)
-      @version, @checksum, @user, @uri = version, checksum, user, uri
+    def initialize(version, checksum, source, user)
+      @version, @checksum, @source, @user = version, checksum, source, user
     end
 
     def home
@@ -21,10 +21,6 @@ module NumbersD
 
     def tar
       "/var/tmp/#{bin}-#{version}.tar.gz"
-    end
-
-    def source
-      throw NotImplemented
     end
 
     def installed?
