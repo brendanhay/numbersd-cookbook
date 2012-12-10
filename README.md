@@ -35,10 +35,15 @@ end
 
 **Without runit:**
 
-The same as above, but you will need to call `#command_line` on a `Flags`
+More or less the same as above, but you will need to substitute the
+`numbersd_runit` provider for `numbersd_install` and call `#command_line` on a `Flags`
 instance to retrieve the full list of flags to pass to a service manager template.
 
 ```ruby
+settings = NumbersD::Settings.new(version, checksum, source, user)
+
+numbersd_install settings
+
 flags = NumbersD::Flags.new(settings)
 flags.command_line
 ```
