@@ -16,13 +16,13 @@ module NumbersD
 
     FLAGS.each { |name| attr_accessor name }
 
-    def initialize(settings)
-      @settings = settings
+    def initialize(path)
+      @path = path
     end
 
     def command_line
       flags = FLAGS.map { |name| flag(name) }
-      "#{@settings.path} #{flags.compact.join(' ')}"
+      [@path].concat(flags.compact).join(' ')
     end
 
     def flag(name)

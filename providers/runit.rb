@@ -4,7 +4,7 @@ action :create do
   numbersd_install res.settings
 
   runit_service name do
-    cookbook      name
+    cookbook name
     template_name name
 
     logger :local

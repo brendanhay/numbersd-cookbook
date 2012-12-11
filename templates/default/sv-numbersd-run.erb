@@ -3,4 +3,4 @@ exec 2>&1
 
 export HOME=<%= @options[:settings].home %>
 
-exec chpst -u <%= @options[:settings].user %> "<%= @options[:flags].command_line %>"
+exec chpst -u <%= @options[:settings].user %> <%= @options[:flags].command_line %>
