@@ -25,10 +25,9 @@ version  = .. # Version to install
 checksum = .. # sha256sum of the tarball
 source   = .. # A url specifying the remote_file for Chef to retrieve
 user     = .. # The user to chown/run numbersd as
+paths    = NumbersD::Paths.new(version, checksum, source, user)
 
-paths = NumbersD::Paths.new(version, checksum, source, user)
-
-flags = NumbersD::Flags.new(paths.full_path)
+flags           = NumbersD::Flags.new(paths.full_path)
 flags.listeners = ["file://stdin", "tcp://0.0.0.0:7125"]
 flags.http      = 7126
 flags.events    = [:invalid, :aggregate]
