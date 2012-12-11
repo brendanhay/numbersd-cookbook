@@ -6,4 +6,4 @@ def initialize(*args)
   @action = :install
 end
 
-attribute(:settings, :kind_of => NumbersD::Settings, :name_attribute => true)
+attribute(:paths, :kind_of => NumbersD::Paths, :name_attribute => true)

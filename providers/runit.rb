@@ -1,7 +1,7 @@
 action :create do
   res, name = new_resource, "numbersd"
 
-  numbersd_install res.settings
+  numbersd_install res.paths
 
   runit_service name do
     cookbook name
@@ -10,8 +10,8 @@ action :create do
     logger :local
 
     options({
-      :settings => res.settings,
-      :flags    => res.flags
+      :paths => res.paths,
+      :flags => res.flags
     })
   end
 end

@@ -6,5 +6,5 @@ def initialize(*args)
   @action = :create
 end
 
-attribute(:settings, { :kind_of => NumbersD::Settings, :name_attribute => true })
-attribute(:flags,    { :kind_of => NumbersD::Flags, :required => true })
+attribute(:paths, { :kind_of => NumbersD::Paths, :name_attribute => true })
+attribute(:flags, { :kind_of => NumbersD::Flags, :required => true })

@@ -1,5 +1,5 @@
 module NumbersD
-  class Settings
+  class Paths
 
     attr_reader :version, :checksum, :source, :user
 
@@ -12,11 +12,15 @@ module NumbersD
       "numbersd"
     end
 
+    def full_path
+      "#{home}/#{bin}"
+    end
+
     def tar
       "#{bin}-#{version}.tar.gz"
     end
 
-    def tar_dir
+    def tmp
       "/var/tmp/#{tar}"
     end
 
@@ -24,12 +28,8 @@ module NumbersD
       "/opt/#{bin}-#{version}"
     end
 
-    def path
-      "#{home}/#{bin}"
-    end
-
     def installed?
-      File.exists?(path)
+      File.exists?(full)
     end
 
   end

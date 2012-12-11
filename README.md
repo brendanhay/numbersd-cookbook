@@ -26,10 +26,17 @@ checksum = .. # sha256sum of the tarball
 source   = .. # A url specifying the remote_file for Chef to retrieve
 user     = .. # The user to chown/run numbersd as
 
-settings = NumbersD::Settings.new(version, checksum, source, user)
+paths = NumbersD::Paths.new(version, checksum, source, user)
 
-numbersd_runit settings do
-  flags NumbersD::Flags.new(settings.path)
+flags = NumbersD::Flags.new(paths.full_path)
+flags.listeners = ["file://stdin", "tcp://0.0.0.0:7125"]
+flags.http      = 7126
+flags.events    = [:invalid, :aggregate]
+flags.interval  = 15
+flags.<name>    = ..
+
+numbersd_runit paths do
+  flags flags
 end
 ```
 

@@ -1,29 +1,29 @@
 action :install do
-  settings = new_resource.settings
+  paths = new_resource.paths
 
-  directory settings.home do
-    owner settings.user
+  directory paths.home do
+    owner paths.user
     mode 0755
   end
 
-  remote_file settings.tar_dir do
-    checksum settings.checksum
-    source settings.source
+  remote_file paths.tmp do
+    checksum paths.checksum
+    source paths.source
     mode 0644
-    not_if { settings.installed? }
+    not_if { paths.installed? }
   end
 
   bash "extract numbersd" do
-    cwd settings.home
+    cwd paths.home
     code <<-CODE
-      tar -xzf #{settings.tar_dir}
-      chown -R #{settings.user} #{settings.home}
+      tar -xzf #{paths.tmp}
+      chown -R #{paths.user} #{paths.home}
     CODE
-    not_if { settings.installed? }
+    not_if { paths.installed? }
   end
 
-  link "/usr/local/bin/#{settings.bin}" do
-    owner settings.user
-    to settings.path
+  link "/usr/local/bin/#{paths.bin}" do
+    owner paths.user
+    to paths.full_path
   end
 end

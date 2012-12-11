@@ -1,6 +1,6 @@
 #!/bin/sh
 exec 2>&1
 
-export HOME=<%= @options[:settings].home %>
+export HOME=<%= @options[:paths].home %>
 
-exec chpst -u <%= @options[:settings].user %> <%= @options[:flags].command_line %>
+exec chpst -u <%= @options[:paths].user %> <%= @options[:flags].command_line %>

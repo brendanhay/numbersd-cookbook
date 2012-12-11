@@ -20,9 +20,9 @@ depends "runit"
 # Resources
 #
 
-# See: ./libraries/settings.rb
-provides "install(:settings)"
+# See: ./libraries/paths.rb
+provides "install(:paths)"
 
-# See: ./libraries/settings.rb,
+# See: ./libraries/paths.rb,
 #      ./libraries/flags.rb
-provides "runit(:settings, :flags)"
+provides "runit(:paths, :flags)"
